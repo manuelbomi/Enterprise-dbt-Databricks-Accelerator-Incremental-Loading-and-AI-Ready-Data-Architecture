@@ -48,6 +48,45 @@ dbt docs serve  # View at localhost:8080
 
 ```
 
+## Core Features & Implementation
+
+#### 1. <ins>Incremental Loading Strategies</ins>
+
+##### Implemented production-grade incremental patterns as per dbt's incremental strategy documentation available here: https://docs.getdbt.com/docs/build/incremental-strategy
+
+```python
+
+-- models/example/incremental_load.sql
+{{
+    config(
+        materialized = 'incremental',
+        incremental_strategy = 'merge',  -- Optimal for Databricks
+        unique_key = 'deviceId',
+        merge_update_columns = ['angle', 'rpm', 'status'],
+        cluster_by = ['deviceId'],
+        on_schema_change = 'append_new_columns'  -- Handle schema evolution
+    )
+}}
+
+SELECT * FROM {{ref('data')}}
+{% if is_incremental() %}
+    WHERE timestamp > (SELECT date_sub(MAX(timestamp), 2) from {{this}})
+{% endif %}
+
+```
+
+
+
+#### 2. <ins>Unity Catalog Integration</ins>
+
+
+
+#### 3. <ins>Data Quality Framework </ins>
+
+
+
+#### 4. <ins>Custom Macros & Jinja Templating </ins>
+
 
 
 
