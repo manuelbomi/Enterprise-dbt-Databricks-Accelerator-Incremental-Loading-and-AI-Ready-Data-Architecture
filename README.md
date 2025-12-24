@@ -163,6 +163,17 @@ FROM {{ source('bakehouse', 'sales_customers') }}
 
 ## Architecture Patterns for Enterprise Scale
 
+#### Incremental Strategy Selection Guide
+
+##### Based on dbt's incremental strategies documentation, here's when to use each pattern:
+
+| Strategy | Best For | Enterprise Use Case | Implementation |
+|----------|----------|---------------------|----------------|
+| merge | Updates & inserts, Databricks/Snowflake | Customer dimension updates | incremental_strategy = 'merge' |
+| insert_overwrite | Partition replacement, BigQuery | Daily fact table refreshes | incremental_strategy = 'insert_overwrite' |
+| append | Event streams, immutable data | Clickstream/telemetry data | incremental_strategy = 'append' |
+| delete+insert | Simple overwrites, smaller datasets | Reference data updates | Legacy pattern, not recommended |
+
 
 
 
