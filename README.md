@@ -695,6 +695,30 @@ Clone it. Customize it. Deploy it. Accelerate your enterprise data journey by mo
 
 <img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/f6e42a7f-802e-4a96-9292-eb8d2e849f12" />
 
+#### We now have a new record in the data file
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/df937bd8-615e-4a1a-8c60-a8822a7919df" />
+
+
+#### But incremetanl_load does not have this record yet
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/e78eb910-2b21-46d7-b321-39b7f46c218f" />
+
+#### We first have to run incremental_load in VScode to update the incremental load file
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/57b7aadf-e2c1-41c1-9d1b-43f623792d22" />
+
+#### The run is successful
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/16277078-1a7c-4df9-8132-7a4a36cb2584" />
+
+#### Now run incremental_load on Databricks to see that it works
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/62e8689d-f520-4549-9e43-42432a62c49a" />
+
+
+
+
 
 
 
