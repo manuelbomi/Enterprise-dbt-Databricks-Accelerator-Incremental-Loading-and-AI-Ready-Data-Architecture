@@ -46,6 +46,18 @@ dbt docs serve  # View at localhost:8080
 
 ```
 
+#### Example of incremental load results on Databricks (please see other results on Miscellaneous)
+
+#### Incremental load (record update)
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/bafd882e-256b-4da8-a26f-23f9392c727d" />
+
+#### Schema Evolution (adding new column)
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/b1836f55-b85b-48ba-bbde-652b511dc71e" />
+
+---
+
 ## Core Features & Implementation
 
 #### 1. <ins>Incremental Loading Strategies</ins>
