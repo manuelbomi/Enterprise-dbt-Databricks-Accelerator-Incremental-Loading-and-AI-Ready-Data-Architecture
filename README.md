@@ -716,6 +716,10 @@ Clone it. Customize it. Deploy it. Accelerate your enterprise data journey by mo
 
 <img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/62e8689d-f520-4549-9e43-42432a62c49a" />
 
+#### Now update; for example, rpm where deviceId = 3
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/79f06ce1-246b-4cf6-b546-346cbda55c4e" />
+
 
 
 
