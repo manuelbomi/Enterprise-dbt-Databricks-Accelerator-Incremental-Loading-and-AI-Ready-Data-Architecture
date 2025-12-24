@@ -1,7 +1,6 @@
 # Enterprise dbt Databricks Accelerator: Incremental Loading & AI-Ready Data Architecture
 
 
-
 [![Enterprise](https://img.shields.io/badge/Architecture-Enterprise_Scale-orange)
 [![dbt](https://img.shields.io/badge/dbt-1.11.0-FF694B)](https://www.getdbt.com/)
 [![Databricks](https://img.shields.io/badge/Databricks-Unity%20Catalog-FF3621)](https://databricks.com/)
