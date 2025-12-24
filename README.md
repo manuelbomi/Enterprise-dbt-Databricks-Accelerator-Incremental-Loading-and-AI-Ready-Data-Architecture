@@ -10,12 +10,10 @@ https://img.shields.io/badge/License-Apache_2.0-blue.svg
 
 https://img.shields.io/badge/Architecture-Enterprise_Scale-orange
 
-
+[![Enterprise](https://img.shields.io/badge/Architecture-Enterprise_Scale-orange)
 [![dbt](https://img.shields.io/badge/dbt-1.11.0-FF694B)](https://www.getdbt.com/)
 [![Databricks](https://img.shields.io/badge/Databricks-Unity%20Catalog-FF3621)](https://databricks.com/)
-[![Databricks](https://img.shields.io/badge/Databricks-Unity%20Catalog-FF3621)](https://databricks.com/)
-[![Enterprise](https://img.shields.io/badge/Architecture-Enterprise_Scale-orange)
-
+[![Databricks](https://img.shields.io/badge/Strategy-Incremental_Merge-blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ### Production-Grade dbt Implementation with Incremental Loading and AI/ML Readiness for Global Enterprises
