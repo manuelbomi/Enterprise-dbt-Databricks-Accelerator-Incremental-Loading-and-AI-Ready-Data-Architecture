@@ -19,6 +19,35 @@ https://img.shields.io/badge/Architecture-Enterprise_Scale-orange
 
 <ins>Key Achievement</ins>: Successfully migrated from legacy Hive Metastore to modern Databricks Unity Catalog architecture while implementing production-grade incremental data processing patterns with dbt (Data Build Tool)
 
+---
+
+##  Quick Start for Enterprise Teams
+
+```python
+# Clone the repository
+git clone https://github.com/yourusername/enterprise-dbt-databricks-accelerator.git
+cd enterprise-dbt-databricks-accelerator
+
+# Set up environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install dbt-core dbt-databricks
+
+# Configure your environment (use provided templates)
+cp config/profiles.yml.example ~/.dbt/profiles.yml
+cp config/environment-variables.example .env
+
+# Initialize and test
+dbt debug  # Verify connection
+dbt run --select incremental_load  # Test incremental strategy
+dbt test  # Validate data quality
+dbt docs generate  # Generate documentation
+dbt docs serve  # View at localhost:8080
+
+```
+
 
 
 
