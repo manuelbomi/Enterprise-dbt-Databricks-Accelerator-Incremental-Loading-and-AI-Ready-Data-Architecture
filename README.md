@@ -25,7 +25,7 @@ https://img.shields.io/badge/Architecture-Enterprise_Scale-orange
 
 ```python
 # Clone the repository
-git clone https://github.com/yourusername/enterprise-dbt-databricks-accelerator.git
+git clone https://github.com/manuelbomi/Enterprise-dbt-Databricks-Accelerator-Incremental-Loading-and-AI-Ready-Data-Architecture.git
 cd enterprise-dbt-databricks-accelerator
 
 # Set up environment
