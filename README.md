@@ -10,10 +10,8 @@ https://img.shields.io/badge/License-Apache_2.0-blue.svg
 
 https://img.shields.io/badge/Architecture-Enterprise_Scale-orange
 
+### Production-Grade dbt Implementation with Incremental Loading and AI/ML Readiness for Global Enterprises
 
-### > Production-Grade dbt Implementation with Incremental Loading and AI/ML Readiness for Global Enterprises
->
-> 
 
 
 
