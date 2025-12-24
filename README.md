@@ -173,6 +173,74 @@ FROM {{ source('bakehouse', 'sales_customers') }}
 | delete+insert | Simple overwrites, smaller datasets | Reference data updates | Legacy pattern, not recommended |
 
 
+# dbt Incremental Materialization Strategies
+
+## Strategy Comparison Matrix
+
+| Strategy | Supported Platforms | Use Case | SQL Pattern | Performance | Data Integrity |
+|----------|---------------------|----------|-------------|-------------|----------------|
+| **`merge`** | Databricks, Snowflake, Spark, Redshift | SCD Type 2, customer dimensions | `MERGE INTO ... WHEN MATCHED ... WHEN NOT MATCHED` | Medium | ✅ **High** |
+| **`insert_overwrite`** | BigQuery, Snowflake, Databricks | Partitioned fact tables | `CREATE OR REPLACE TABLE partition` | High | ✅ **High** |
+| **`append`** | All platforms | Event streams, logs, telemetry | `INSERT INTO ... SELECT ...` | Very High | ✅ **High** |
+| **`delete+insert`** | Legacy support | Small reference tables | `DELETE ...; INSERT ...` | Low | ⚠️ **Medium** |
+
+## Implementation Examples
+
+### 1. Merge Strategy (Recommended for Dimensions)
+```sql
+{{ config(
+    materialized='incremental',
+    incremental_strategy='merge',
+    unique_key='customer_id'
+) }}
+
+SELECT 
+    customer_id,
+    customer_name,
+    updated_at
+FROM {{ ref('stg_customers') }}
+WHERE updated_at > (SELECT MAX(updated_at) FROM {{ this }})
+```
+
+### 2. Insert Overwrite Strategy (BigQuery Partitioned Tables)
+```sql
+{{ config(
+    materialized='incremental',
+    incremental_strategy='insert_overwrite',
+    partition_by={'field': 'date', 'data_type': 'date'}
+) }}
+
+SELECT 
+    date,
+    product_id,
+    SUM(sales_amount) as daily_sales
+FROM {{ ref('stg_transactions') }}
+GROUP BY 1, 2
+```
+
+### 3. Append Strategy (Event Data)
+```sql
+{{ config(
+    materialized='incremental',
+    incremental_strategy='append'
+) }}
+
+SELECT 
+    event_id,
+    user_id,
+    event_timestamp,
+    event_type
+FROM {{ ref('stg_events') }}
+WHERE event_timestamp > (SELECT MAX(event_timestamp) FROM {{ this }})
+```
+
+## Selection Guidelines
+- **Dimensional data:** Use `merge` with `unique_key`
+- **Partitioned fact tables:** Use `insert_overwrite`
+- **Append-only events:** Use `append`
+- **Avoid:** `delete+insert` (legacy, inefficient)
+
+
 
 
 
