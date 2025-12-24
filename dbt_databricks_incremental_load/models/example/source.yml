@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: bakehouse
+    database: samples
+    tables:
+      - name: sales_customers
+        description: "sales_customers"
+      - name: sales_transactions
+        description: "sales_transactions"
