@@ -720,6 +720,63 @@ Clone it. Customize it. Deploy it. Accelerate your enterprise data journey by mo
 
 <img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/79f06ce1-246b-4cf6-b546-346cbda55c4e" />
 
+#### The update has been effected
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/d9c44c57-b576-4786-80ec-d6a14d732881" />
+
+#### This query should not return anything
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/cf07a654-d361-46fa-b2d8-a15e99380179" />
+
+#### We got the record that changed by subtracting some days
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/acdf6bc6-137e-4508-88ff-b773c25e0482" />
+
+####  If we attempt to see back two steps in the incremental load as well by subtracting 2 dayes from date in VScode
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/5165f1d1-9c45-4d17-8b56-fc19ea357ca5" />
+
+#### We will see what happens to our table also from two steps back
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/0a76016f-4538-44af-acf6-19666dc93ca2" />
+
+#### To test schema evolution, add new column named status (or any other name you prefer) and set its value as OK. This is just to test schema evolution. 
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/b51110e4-663a-4242-9861-32943d88a05e" />
+
+#### We can see the newly added column on the original data
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/586910a3-53da-4fd4-bb3a-13de1b38a226" />
+
+
+#### Make the necessary changes on the incremenntal load on VSCode to reflect the schema changes
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/a468b8df-493f-4ed5-9606-a11ca9759a19" />
+
+####  The new colum and the last changed values reflects on the incremental_load model on Databricks
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/cf98f9fb-be16-49db-a4ad-c26f6f5b1309" />
+
+####  Do a full refresh of all the tables and models
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/e27d6bab-d4e3-4b27-8bbf-1243adc0cedf" />
+
+#### Full refresh successfull
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/c16ccbbc-4c79-4cd0-83a9-8749ddbd40dc" />
+
+#### Full refresh have backfilled all the status column rows on incremental_load on Databricks
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/4fe8dac7-5a5b-465e-bc52-224eb6649e95" />
+
+#### Sync all coumns and other strategies can also work
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/5b6ca9e2-c381-4975-a8eb-26af97bd0df0" />
+
+
+
+
+
 
 
 
