@@ -363,6 +363,58 @@ incremental_config:
 
 ```
 
+#### <ins>E-commerce Scale Implementation</ins>
+
+```python
+# scripts/monitoring/ecommerce_monitoring.py
+"""
+Monitors 1M+ hourly transactions with incremental processing
+"""
+metrics = {
+    'real_time_processing': {
+        'order_events': 'incremental merge every 5 minutes',
+        'inventory_updates': 'incremental append every 1 minute',
+        'user_sessions': 'incremental merge every 15 minutes'
+    },
+    'ai_integration': {
+        'recommendation_features': 'hourly incremental refresh',
+        'personalization_vectors': 'real-time incremental updates',
+        'fraud_detection': 'streaming incremental processing'
+    }
+}
+```
+
+---
+
+## Comprehensive Testing Framework
+
+#### <ins>Incremental Load Validation</ins>
+
+```python
+-- tests/validate_incremental_load.sql
+-- Test that incremental loads only process new data
+WITH source_counts AS (
+    SELECT COUNT(*) as total_count,
+           COUNT(CASE WHEN timestamp > '{{ get_last_incremental_run() }}' THEN 1 END) as new_count
+    FROM {{ source('raw', 'transactions') }}
+),
+target_counts AS (
+    SELECT COUNT(*) as incremental_count
+    FROM {{ ref('incremental_load') }}
+    WHERE _dbt_incremental_run = true
+)
+
+SELECT 
+    CASE 
+        WHEN s.new_count = t.incremental_count THEN 'PASS'
+        ELSE 'FAIL: ' || s.new_count || ' vs ' || t.incremental_count
+    END as test_result
+FROM source_counts s, target_counts t
+
+```
+
+
+
 
 
 
