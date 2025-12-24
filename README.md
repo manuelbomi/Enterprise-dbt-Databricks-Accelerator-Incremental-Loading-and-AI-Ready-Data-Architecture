@@ -599,7 +599,7 @@ team_ownership:
 
 ```
 
-#### Collaboration Workflow
+#### <ins>Collaboration Workflow</ins>:
 
 <img width="2548" height="1498" alt="Image" src="https://github.com/user-attachments/assets/bc0f279a-6469-4bd3-8d87-9ed02032e43f" />
 
