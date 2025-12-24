@@ -621,48 +621,79 @@ packages:
 
 ---
 
-## Support & Troubleshooting
+## 🙏 Acknowledgments
 
-#### Common Issues & Solutions
+- dbt Labs for the incredible incremental strategies framework
 
-| Issue | Solution | Reference |
-|-------|----------|-----------|
-| UC_HIVE_METASTORE_DISABLED_EXCEPTION | Use Unity Catalog configuration | docs/migration_guide.md |
-| Incremental merge performance issues | Add cluster keys and partitions | scripts/optimize_merge.py |
-| Schema change errors | Use on_schema_change config | tests/schema_evolution.sql |
-| Data quality test failures | Configure severity levels | config/severity_rules.yml |
-| Jinja template errors | Debug with dbt compile | macros/debug_helpers.sql |
-| Package dependency issues | Run dbt deps and check versions | package-lock.yml |
+- Databricks for Unity Catalog and enterprise-scale capabilities
 
+- McDonald's Global Technology for inspiring real-world scale challenges
 
-# dbt Development Troubleshooting Guide
+- Enterprise Data Teams worldwide for shared patterns and practices
 
-## Common Issues & Solutions
+---
 
-| Category | Issue | Solution | Implementation | Reference |
-|----------|-------|----------|----------------|-----------|
-| **Configuration** | `UC_HIVE_METASTORE_DISABLED_EXCEPTION` | Switch to Unity Catalog | Update `profiles.yml` with Unity Catalog config | [Migration Guide](docs/migration_guide.md) |
-| **Performance** | Slow incremental merges | Add Z-order clustering and partitions | ```sql {{ config( cluster_by=["customer_id", "date"] ) }} ``` | [Optimization Script](scripts/optimize_merge.py) |
-| **Schema** | Schema evolution errors | Use `on_schema_change` configuration | ```sql {{ config( on_schema_change="sync_all_columns" ) }} ``` | [Schema Tests](tests/schema_evolution.sql) |
-| **Testing** | Data quality test failures | Configure test severity levels | ```yaml tests: your_model: +error_after: "2024-01-01" ``` | [Severity Rules](config/severity_rules.yml) |
-| **Development** | Jinja template errors | Debug with `dbt compile` | ```bash dbt compile --select model_name ``` | [Debug Macros](macros/debug_helpers.sql) |
-| **Dependencies** | Package resolution issues | Update dependencies with `dbt deps` | ```bash dbt deps --upgrade ``` | [Package Lock](package-lock.yml) |
+## Why This Repository Matters for Your Enterprise
 
-## Quick Fix Commands
-```bash
-# 1. Dependency issues
-dbt deps --upgrade
+#### This is not just another dbt project. Rather, it is battle-tested implementation that solves real enterprise problems:
 
-# 2. Template debugging
-dbt compile --select problematic_model
+- Proven at Scale: From initial UC_HIVE_METASTORE_DISABLED_EXCEPTION to production-grade incremental loads
 
-# 3. Check configurations
-dbt debug --config-dir
+- Complete Journey: Every step documented with actual code and solutions. Please see Miscellaneous for further details.
 
-# 4. Test specific issues
-dbt test --select test_name
+- Enterprise Patterns: Not just theory—working implementations
 
-    
+- AI/ML Ready: Built for the next generation of data applications with Generative AI integration
+
+- Team Ready: Collaboration features and ownership models
+
+- Real Data: Tested with actual Databricks Free Edition and real data scenarios
+
+Clone it. Customize it. Deploy it. Accelerate your enterprise data journey by months or even years.
+
+---
+
+#### Built with ❤️ by Enterprise Data/AI?ML Practitioners | Real Problems, Real Solutions
+
+#### Star this repo if it accelerates your data journey! ⭐
+
+---
+
+## Miscellaneous
+
+#### Here is a step by step process that can guide your enterprise data/AI teams if you prefer to build this repo up. The guide is complete with snapshot of results for each step of the process. 
+
+#### To build up the workflow using this startegy, it is advisable to first read through the enterprise dbt setup teamplate here: https://github.com/manuelbomi/dbt-Databricks-Enterprise-Blueprint-Unity-Catalog-Data-Quality-and-Scalable-Architecture.git
+
+#### Implementation Steps
+
+#### Set up incremental_load.sql file
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/c2c79008-e904-46d3-a0c4-4192eb714c42" />
+
+#### dbt run select incremental_load
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/257e5b6f-28c3-4d6f-a7c6-21e3385c6ebf" />
+
+#### dbt run select incremental_load works
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/0e21363d-81d4-40ad-892e-3080fc09189b" />
+
+#### dbt incremental load now in Databricks
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/d606f817-66bf-4caa-bedf-6e7f7cc28d57" />
+
+#### Current values of the incrementl_load file. It is currently similar to the data file
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/4bcb278e-a190-45ea-8439-f08215c7d33f" />
+
+#### Current values of the data file
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/f9e563be-9d06-4dd6-8e85-94d7b561576d" />
+
+#### Insert new data set into the original data file
+
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/f6e42a7f-802e-4a96-9292-eb8d2e849f12" />
 
 
 
