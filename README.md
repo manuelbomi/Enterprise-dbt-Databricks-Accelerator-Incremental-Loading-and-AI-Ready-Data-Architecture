@@ -461,17 +461,64 @@ SELECT *, NULL as new_status FROM {{ ref('source_table') }}
 
 ## Getting Started for Your Enterprise
 
-#### <ins>Step 1</ins>: Clone and Configure
+#### <ins>Step 1.</ins>: Clone and Configure
 
-# Clone with all patterns
-git clone --branch enterprise-template https://github.com/yourusername/enterprise-dbt-databricks-accelerator.git
+#####  Clone with all patterns
+git clone https://github.com/manuelbomi/Enterprise-dbt-Databricks-Accelerator-Incremental-Loading-and-AI-Ready-Data-Architecture.git
+cd dbt_databricks_incremental_load
 
-# Set up enterprise configuration
+##### Set up enterprise configuration
 python scripts/setup_enterprise.py \
     --industry retail \
     --scale large \
     --compliance gdpr,pci_dss \
     --cloud databricks
+
+---
+
+#### <ins>Step 2.</ins>: Customize for your use case
+
+```python
+# config/custom/your_company.yml
+company:
+  name: "YourEnterprise"
+  data_domains:
+    - customer_360
+    - supply_chain
+    - financial_reporting
+  
+incremental_strategies:
+  customer_360:
+    base_model: "{{ ref('incremental_load') }}"
+    customizations:
+      unique_key: "{{ var('customer_unique_key') }}"
+      merge_columns: "{{ var('customer_update_columns') }}"
+      cluster_keys: "{{ var('customer_cluster_keys') }}"
+
+```
+
+```
+
+#### <ins>Step 3.</ins>: Deploy with CI/CD
+
+```python
+# .github/workflows/enterprise_deployment.yml
+jobs:
+  incremental_deploy:
+    runs-on: enterprise-runner
+    steps:
+      - run: dbt run --select tag:incremental
+      - run: dbt test --select tag:incremental
+      - run: dbt docs generate
+    environment: production
+    schedule: "*/15 * * * *"  # Every 15 minutes
+
+```
+
+---
+
+
+    
 
 
 
