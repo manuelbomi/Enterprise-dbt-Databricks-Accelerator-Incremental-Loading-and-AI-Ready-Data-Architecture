@@ -75,7 +75,7 @@ SELECT * FROM {{ref('data')}}
 
 ```
 
-### Why This Matters for Enterprises:
+#### Why This Matters for Enterprises:
 
 - <ins>Performance</ins>: Processes only new/changed data ( for example, enterprise with 65M+ daily transactions such as McDonald's)
 
@@ -85,21 +85,83 @@ SELECT * FROM {{ref('data')}}
 
 - <ins>Schema Evolution</ins>: on_schema_change handles production schema migrations gracefully
 
+---
+
 
 
 #### 2. <ins>Unity Catalog Integration</ins>
 
+#### Solved the critical UC_HIVE_METASTORE_DISABLED_EXCEPTION migration challenge:
+
 ```python
 
+# Correct configuration for Databricks Free Edition with Unity Catalog
+profiles.yml:
+  outputs:
+    dev:
+      catalog: workspace  # Unity Catalog integration
+      schema: dbt_databricks_proj_sch
+      type: databricks
+
 ```
+
+#### Migration Journey Documented:
+
+- Initial error: UC_HIVE_METASTORE_DISABLED_EXCEPTION
+
+- Solution: Proper Unity Catalog configuration
+
+- Result: "All checks passed!" with enterprise-grade governance
 
 
 
 #### 3. <ins>Data Quality Framework </ins>
 
+##### Configurable testing with severity management:
+
+```python
+# models/example/schema.yml
+models:
+  - name: model1
+    columns:
+      - name: customerID
+        tests:
+          - not_null:
+              severity: error  # Fails build
+          - unique:
+              severity: warn   # Warning only
+      - name: gender
+        tests:
+          - accepted_values:
+              values: ['male', 'female']
+              severity: error
+```
+
 
 
 #### 4. <ins>Custom Macros & Jinja Templating </ins>
+
+##### Advanced code reuse and dynamic SQL generation:
+
+```python
+-- macros/custom/dbt_databricks_proj_macro.sql
+{%- macro dbt_databricks_proj_macro(column_name) -%}
+     {{ column_name }} as macro_new_column
+{%- endmacro -%}
+
+-- models/example/model3.sql (Dynamic column selection)
+{% set list1 = ['gender', 'customerID', 'first_name'] %}
+
+SELECT {% for item in list1 %}
+           {{ item }}{% if not loop.last %}, {% endif %}
+       {% endfor %}
+FROM {{ source('bakehouse', 'sales_customers') }}
+
+```
+
+---
+
+## Architecture Patterns for Enterprise Scale
 
 
 
