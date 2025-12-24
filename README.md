@@ -26,7 +26,7 @@ https://img.shields.io/badge/Architecture-Enterprise_Scale-orange
 ```python
 # Clone the repository
 git clone https://github.com/manuelbomi/Enterprise-dbt-Databricks-Accelerator-Incremental-Loading-and-AI-Ready-Data-Architecture.git
-cd enterprise-dbt-databricks-accelerator
+cd dbt_databricks_incremental_load
 
 # Set up environment
 python -m venv venv
