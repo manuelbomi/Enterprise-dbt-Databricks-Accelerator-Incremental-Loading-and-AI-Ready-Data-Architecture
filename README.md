@@ -603,6 +603,64 @@ team_ownership:
 
 <img width="2548" height="1498" alt="Image" src="https://github.com/user-attachments/assets/bc0f279a-6469-4bd3-8d87-9ed02032e43f" />
 
+#### Package Management
+
+```python
+# packages.yml
+packages:
+  - package: dbt-labs/dbt_utils
+    version: 1.3.1
+  
+  - package: calogica/dbt_expectations
+    version: 0.10.2
+  
+  - package: dbt-labs/codegen
+    version: 0.14.0
+
+```
+
+---
+
+## Support & Troubleshooting
+
+#### Common Issues & Solutions
+
+| Issue | Solution | Reference |
+|-------|----------|-----------|
+| UC_HIVE_METASTORE_DISABLED_EXCEPTION | Use Unity Catalog configuration | docs/migration_guide.md |
+| Incremental merge performance issues | Add cluster keys and partitions | scripts/optimize_merge.py |
+| Schema change errors | Use on_schema_change config | tests/schema_evolution.sql |
+| Data quality test failures | Configure severity levels | config/severity_rules.yml |
+| Jinja template errors | Debug with dbt compile | macros/debug_helpers.sql |
+| Package dependency issues | Run dbt deps and check versions | package-lock.yml |
+
+
+# dbt Development Troubleshooting Guide
+
+## Common Issues & Solutions
+
+| Category | Issue | Solution | Implementation | Reference |
+|----------|-------|----------|----------------|-----------|
+| **Configuration** | `UC_HIVE_METASTORE_DISABLED_EXCEPTION` | Switch to Unity Catalog | Update `profiles.yml` with Unity Catalog config | [Migration Guide](docs/migration_guide.md) |
+| **Performance** | Slow incremental merges | Add Z-order clustering and partitions | ```sql {{ config( cluster_by=["customer_id", "date"] ) }} ``` | [Optimization Script](scripts/optimize_merge.py) |
+| **Schema** | Schema evolution errors | Use `on_schema_change` configuration | ```sql {{ config( on_schema_change="sync_all_columns" ) }} ``` | [Schema Tests](tests/schema_evolution.sql) |
+| **Testing** | Data quality test failures | Configure test severity levels | ```yaml tests: your_model: +error_after: "2024-01-01" ``` | [Severity Rules](config/severity_rules.yml) |
+| **Development** | Jinja template errors | Debug with `dbt compile` | ```bash dbt compile --select model_name ``` | [Debug Macros](macros/debug_helpers.sql) |
+| **Dependencies** | Package resolution issues | Update dependencies with `dbt deps` | ```bash dbt deps --upgrade ``` | [Package Lock](package-lock.yml) |
+
+## Quick Fix Commands
+```bash
+# 1. Dependency issues
+dbt deps --upgrade
+
+# 2. Template debugging
+dbt compile --select problematic_model
+
+# 3. Check configurations
+dbt debug --config-dir
+
+# 4. Test specific issues
+dbt test --select test_name
 
     
 
