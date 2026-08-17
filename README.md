@@ -192,10 +192,10 @@ FROM {{ source('bakehouse', 'sales_customers') }}
 
 | Strategy | Supported Platforms | Use Case | SQL Pattern | Performance | Data Integrity |
 |----------|---------------------|----------|-------------|-------------|----------------|
-| **`merge`** | Databricks, Snowflake, Spark, Redshift | SCD Type 2, customer dimensions | `MERGE INTO ... WHEN MATCHED ... WHEN NOT MATCHED` | Medium | ✅ **High** |
-| **`insert_overwrite`** | BigQuery, Snowflake, Databricks | Partitioned fact tables | `CREATE OR REPLACE TABLE partition` | High | ✅ **High** |
-| **`append`** | All platforms | Event streams, logs, telemetry | `INSERT INTO ... SELECT ...` | Very High | ✅ **High** |
-| **`delete+insert`** | Legacy support | Small reference tables | `DELETE ...; INSERT ...` | Low | ⚠️ **Medium** |
+| **`merge`** | Databricks, Snowflake, Spark, Redshift | SCD Type 2, customer dimensions | `MERGE INTO ... WHEN MATCHED ... WHEN NOT MATCHED` | Medium | **High** |
+| **`insert_overwrite`** | BigQuery, Snowflake, Databricks | Partitioned fact tables | `CREATE OR REPLACE TABLE partition` | High | **High** |
+| **`append`** | All platforms | Event streams, logs, telemetry | `INSERT INTO ... SELECT ...` | Very High | **High** |
+| **`delete+insert`** | Legacy support | Small reference tables | `DELETE ...; INSERT ...` | Low | **Medium** |
 
 ## Implementation Examples
 
