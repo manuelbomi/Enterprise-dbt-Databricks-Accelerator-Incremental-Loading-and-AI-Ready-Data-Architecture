@@ -184,7 +184,7 @@ FROM {{ source('bakehouse', 'sales_customers') }}
 | append | Event streams, immutable data | Clickstream/telemetry data | incremental_strategy = 'append' |
 | delete+insert | Simple overwrites, smaller datasets | Reference data updates | Legacy pattern, not recommended |
 
-```
+
 
 
 
