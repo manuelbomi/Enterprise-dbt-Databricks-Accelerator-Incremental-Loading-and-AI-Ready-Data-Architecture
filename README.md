@@ -627,8 +627,6 @@ packages:
 
 - Databricks for Unity Catalog and enterprise-scale capabilities
 
-- McDonald's Global Technology for inspiring real-world scale challenges
-
 - Enterprise Data Teams worldwide for shared patterns and practices
 
 ---
@@ -653,7 +651,7 @@ Clone it. Customize it. Deploy it. Accelerate your enterprise data journey by mo
 
 ---
 
-#### Built with ❤️ by Enterprise Data/AI?ML Practitioners | Real Problems, Real Solutions
+#### Built with ❤️ by Enterprise Data/AI/ML Practitioners | Real Problems, Real Solutions
 
 #### Star this repo if it accelerates your data journey! ⭐
 
